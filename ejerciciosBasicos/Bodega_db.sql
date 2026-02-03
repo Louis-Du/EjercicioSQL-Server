@@ -58,7 +58,7 @@ INSERT INTO Productos(codigoprod, nombreprod, Valorunitarioprod, codigoCateg) VA
 (1468, 'Escritorio', 80000, 111), 
 (1232, 'Sillas', 40000, 111),
 (1345, 'Manzana', 2000, 112),
-(1268, 'Jabón', 5000, 113),
+(1268, 'JabÃ³n', 5000, 113),
 (1267, 'Crema', 10000, 113),
 (1214, 'Pera', 2000, 112)
 select * from Productos
