@@ -1,4 +1,6 @@
-create table Categorias(
+CREATE DATABASE Bodega
+GO
+CREATE TABLE Categorias(
 	codigoCateg int not null PRIMARY KEY,
 	nombreCateg VARCHAR(50) not null
 )
@@ -108,3 +110,4 @@ SELECT * from Clientes
 SELECT * from Pedidos
 SELECT * from ProductosPedidos
 SELECT * from ProductosProveedor
+
