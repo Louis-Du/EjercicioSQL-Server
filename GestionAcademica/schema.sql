@@ -48,4 +48,4 @@ foreign key (idActividades) references Actividades)
 -------------------------------------------------------------------------------------------------------------------
 create table CursosAsignaturas (
 nitAsignatura numeric not null,
-codigoCurso numeric not null,)
+codigoCurso numeric not null)
