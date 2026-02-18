@@ -1,51 +1,71 @@
-create table Cursos (
-codigoCurso numeric not null,
-nombreCurso varchar (50) not null,
-jornadaCurso varchar (50) not null,
-primary key (codigoCurso))
--------------------------------------------------------------------------------------------------------------------
-create table Asignaturas (
-nitAsignatura numeric not null,
-nombreAsignatura varchar (50) not null,
-primary key (nitAsignatura))
--------------------------------------------------------------------------------------------------------------------
-create table Profesor (
-idProfesor numeric not null primary key,
-nombreProfesor varchar (50) not null,
-apellidoProfesor varchar (50)not null,
-edadProfesor int not null,
-telefonoProfesor int not null,
-emailProfesor varchar (50) not null,
-generoProfesor varchar (50) not null,
-nitAsignatura numeric not null,
-foreign key (nitAsignatura) references Asignaturas)
--------------------------------------------------------------------------------------------------------------------
-create table Actividades (
-idActividades numeric not null,
-tipoActividad varchar (50) not null,
-nombreActividad varchar (50) not null,
-fechaActividad date not null,
-primary key (idActividades),
-nitAsignatura numeric not null,
-foreign key (nitAsignatura) references Asignaturas)
--------------------------------------------------------------------------------------------------------------------
-create table Estudiantes (
-idEstudiantes numeric not null primary key,
-nombreEstudiantes varchar (50) not null,
-edadEstudiantes int not null,
-telefonoEstudiantes int not null,
-emailEstudiantes varchar (50) not null,
-generoEstudiantes varchar (50) not null,
-codigoCurso numeric not null,
-foreign key (codigoCurso) references Cursos)
--------------------------------------------------------------------------------------------------------------------
-create table Calificacion (
-idCalificacion numeric not null primary key,
-notaCalificacion float not null,
-fechaCalificacion date not null,
-idActividades numeric not null,
-foreign key (idActividades) references Actividades)
--------------------------------------------------------------------------------------------------------------------
-create table CursosAsignaturas (
-nitAsignatura numeric not null,
-codigoCurso numeric not null)
+-- =========================
+-- DATA.sql
+-- =========================
+
+CREATE DATABASE GestionAcademica
+GO
+
+-- =========================
+-- TABLAS
+-- =========================
+
+CREATE TABLE Cursos (
+    codigoCurso INT PRIMARY KEY,
+    nombreCurso VARCHAR(50) NOT NULL,
+    jornadaCurso VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Asignaturas (
+    nitAsignatura INT PRIMARY KEY,
+    nombreAsignatura VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Profesor(
+    idProfesor INT PRIMARY KEY,
+    nombreProfesor VARCHAR(50) NOT NULL,
+    apellidoProfesor VARCHAR(50) NOT NULL,
+    edadProfesor INT NOT NULL,
+    telefonoProfesor BIGINT NOT NULL,
+    emailProfesor VARCHAR(50) NOT NULL,
+    generoProfesor VARCHAR(50) NOT NULL,
+    nitAsignatura INT NOT NULL,
+    FOREIGN KEY (nitAsignatura) REFERENCES Asignaturas(nitAsignatura)
+)
+
+CREATE TABLE Actividades (
+    idActividades INT PRIMARY KEY,
+    tipoActividad VARCHAR(50) NOT NULL,
+    nombreActividad VARCHAR(50) NOT NULL,
+    fechaActividad DATE NOT NULL,
+    nitAsignatura INT NOT NULL,
+    FOREIGN KEY (nitAsignatura) REFERENCES Asignaturas(nitAsignatura)
+)
+
+CREATE TABLE Estudiantes (
+    idEstudiantes INT PRIMARY KEY,
+    nombreEstudiantes VARCHAR(50) NOT NULL,
+    edadEstudiantes INT NOT NULL,
+    telefonoEstudiantes BIGINT NOT NULL,
+    emailEstudiantes VARCHAR(50) NOT NULL,
+    generoEstudiantes VARCHAR(50) NOT NULL,
+    codigoCurso INT NOT NULL,
+    FOREIGN KEY (codigoCurso) REFERENCES Cursos(codigoCurso)
+)
+
+CREATE TABLE CursosAsignaturas (
+    nitAsignatura INT NOT NULL,
+    codigoCurso INT NOT NULL,
+    PRIMARY KEY (nitAsignatura, codigoCurso),
+    FOREIGN KEY (nitAsignatura) REFERENCES Asignaturas(nitAsignatura),
+    FOREIGN KEY (codigoCurso) REFERENCES Cursos(codigoCurso)
+)
+
+CREATE TABLE Calificacion (
+    idCalificacion INT PRIMARY KEY,
+    notaCalificacion DECIMAL(3,1) NOT NULL,
+    fechaCalificacion DATE NOT NULL,
+    idActividades INT NOT NULL,
+    idEstudiantes INT NOT NULL,
+    FOREIGN KEY (idActividades) REFERENCES Actividades(idActividades),
+    FOREIGN KEY (idEstudiantes) REFERENCES Estudiantes(idEstudiantes)
+)
