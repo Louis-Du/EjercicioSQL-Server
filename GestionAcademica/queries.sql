@@ -66,7 +66,7 @@ AND Profesor.nitAsignatura = Asignaturas.nitAsignatura;
 -- actividad de tipo examen en la asignatura matemáticas 
 -- y el nombre y jornada del curso al que pertenecen.
 
-SELECT top 1 nombreEstudiantes, AVG(notaCalificacion) as 'Promedio de calificaciones', nombreCurso, jornadaCurso 
+SELECT nombreEstudiantes, AVG(notaCalificacion) as 'Promedio de calificaciones', nombreCurso, jornadaCurso 
 FROM Estudiantes, Calificacion, Actividades, Asignaturas, Cursos, CursosAsignaturas
 WHERE Estudiantes.idEstudiantes = Calificacion.idEstudiantes
 and Calificacion.idActividades = Actividades.idActividades
@@ -103,9 +103,10 @@ and nombreCurso = 'Octavo 02'
 and generoEstudiantes = 'Masculino'
 
 --Ejercicio 7.12--
-select nombreEstudiantes from Estudiantes, Calificacion, Cursos, Asignaturas, CursosAsignaturas, Actividades
+select top 3 notaCalificacion, nombreEstudiantes from Estudiantes, Calificacion, Cursos, Asignaturas, CursosAsignaturas, Actividades
 where Estudiantes.codigoCurso = Cursos.codigoCurso
 and Calificacion.idActividades = Actividades.idActividades
+and Calificacion.idEstudiantes = Estudiantes.idEstudiantes
 and Cursos.codigoCurso = CursosAsignaturas.codigoCurso
 and Asignaturas.nitAsignatura = CursosAsignaturas.nitAsignatura
 and Actividades.nitAsignatura = Asignaturas.nitAsignatura
@@ -139,6 +140,14 @@ and Asignaturas.nitAsignatura = Profesor.nitAsignatura
 and Asignaturas.nitAsignatura = Actividades.nitAsignatura
 GROUP BY nombreAsignatura, nombreProfesor
 
+
+select * from Cursos
+select * from CursosAsignaturas
+select * from Profesor
+select * from Estudiantes
+select * from Asignaturas
+select * from Actividades
+select * from Calificacion
 
 
 

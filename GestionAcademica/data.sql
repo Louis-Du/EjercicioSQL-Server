@@ -14,6 +14,8 @@ INSERT INTO Cursos VALUES
 (1102,'Once 02','Mañana');
 
 -- ASIGNATURAS
+delete from Asignaturas
+
 INSERT INTO Asignaturas VALUES
 (1,'Algoritmo'),
 (2,'Inglés'),
@@ -35,12 +37,47 @@ INSERT INTO Profesor VALUES
 
 -- CURSOS ASIGNATURAS
 INSERT INTO CursosAsignaturas VALUES
-(1,601),(1,701),(1,1101),
+(1,601),
 (2,601),
+(3,601),
+(4,601),
+(5,601),
+(6,601),
+(7,601),
+(1,602),
+(2,602),
 (3,602),
-(4,702),
-(5,1001),
+(4,602),
+(5,602),
+(6,602),
+(7,602),
+(1,701),
+(2,701),
+(3,701),
+(4,701),
+(5,701),
 (6,701),
+(7,701),
+(1,702),
+(2,702),
+(3,702),
+(4,702),
+(5,702),
+(6,702),
+(7,702),
+(1,1001),
+(2,1001),
+(3,1001),
+(4,1001),
+(5,1001),
+(6,1001),
+(7,1001),
+(1,1101),
+(2,1102),
+(3,1102),
+(4,1102),
+(5,1102),
+(6,1102),
 (7,1102);
 
 -- ESTUDIANTES
@@ -63,12 +100,13 @@ INSERT INTO Estudiantes VALUES
 (16,'Emily Alvarez',14,302154793,'emily@correo.com','Femenino',802),
 (17,'Lautaro Quintero',15,302143821,'lautaro@correo.com','Masculino',1102);
 
+
 -- ACTIVIDADES
 INSERT INTO Actividades VALUES
 (1,'Taller','Taller de bases de datos','2025-08-21',1),
 (2,'Exposición','Exposición modelos de BD','2026-02-05',1),
 (3,'Quiz','Quiz algoritmo','2025-03-10',1),
-(4,'Examen','Examen castellano','2025-02-05',3),
+(4,'Examen','Examen inglés','2025-02-05',2),
 (5,'Examen','Examen matemáticas','2025-04-15',5),
 (6,'Exposición','Exposición ciencias','2025-03-20',6),
 (7,'Examen','Examen química','2025-05-10',7),
@@ -86,6 +124,16 @@ INSERT INTO Calificacion VALUES
 (6,4.2,'2025-08-19',8,6),
 (7,3.9,'2025-08-20',9,7),
 (8, 4.2, '2025-03-11', 3, 2);
+select * from  Calificacion
+select * from  Actividades
+select * from Cursos
+select * from  CursosAsignaturas
+select * from  Estudiantes
+select * from  Asignaturas
 
-
-
+insert into Calificacion values
+(9, 4.5, '2025-05-10', 7, 9),
+(10, 3.5, '2025-05-10', 7, 12),
+(11, 1.0, '2025-05-10', 7, 14),
+(12, 5.0, '2025-05-10', 7, 15),
+(13, 3.0, '2025-05-10', 7, 17)

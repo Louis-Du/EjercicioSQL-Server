@@ -52,12 +52,11 @@ CREATE TABLE Estudiantes (
     FOREIGN KEY (codigoCurso) REFERENCES Cursos(codigoCurso)
 )
 
+
+
 CREATE TABLE CursosAsignaturas (
     nitAsignatura INT NOT NULL,
     codigoCurso INT NOT NULL,
-    PRIMARY KEY (nitAsignatura, codigoCurso),
-    FOREIGN KEY (nitAsignatura) REFERENCES Asignaturas(nitAsignatura),
-    FOREIGN KEY (codigoCurso) REFERENCES Cursos(codigoCurso)
 )
 
 CREATE TABLE Calificacion (
