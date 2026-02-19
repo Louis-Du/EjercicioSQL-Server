@@ -14,8 +14,6 @@ INSERT INTO Cursos VALUES
 (1102,'Once 02','Mañana');
 
 -- ASIGNATURAS
-delete from Asignaturas
-
 INSERT INTO Asignaturas VALUES
 (1,'Algoritmo'),
 (2,'Inglés'),
@@ -123,13 +121,7 @@ INSERT INTO Calificacion VALUES
 (5,3.5,'2025-03-21',6,5),
 (6,4.2,'2025-08-19',8,6),
 (7,3.9,'2025-08-20',9,7),
-(8, 4.2, '2025-03-11', 3, 2);
-select * from  Calificacion
-select * from  Actividades
-select * from Cursos
-select * from  CursosAsignaturas
-select * from  Estudiantes
-select * from  Asignaturas
+(8,4.2,'2025-03-11',3,2);
 
 insert into Calificacion values
 (9, 4.5, '2025-05-10', 7, 9),
