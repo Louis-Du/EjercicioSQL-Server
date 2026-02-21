@@ -2,7 +2,7 @@
 -- DATA.sql
 -- =========================
 
-CREATE DATABASE GestionAcademica
+CREATE DATABASE GestionAcademicas
 GO
 
 -- =========================
@@ -68,3 +68,10 @@ CREATE TABLE Calificacion (
     FOREIGN KEY (idActividades) REFERENCES Actividades(idActividades),
     FOREIGN KEY (idEstudiantes) REFERENCES Estudiantes(idEstudiantes)
 )
+
+---
+
+
+
+
+

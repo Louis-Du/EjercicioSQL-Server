@@ -10,16 +10,17 @@ and Actividades.tipoActividad = 'Taller' and Profesor.apellidoProfesor = 'Núñe
 group by fechaActividad, nombreAsignatura
 
 --Ejercicio 7.2--
-select nombreProfesor, jornadaCurso from Profesor, Asignaturas, Cursos, CursosAsignaturas, Actividades
-where Profesor.nitAsignatura = Asignaturas.nitAsignatura
+SELECT DISTINCT Profesor.nombreProfesor, Profesor.apellidoProfesor, Cursos.jornadaCurso
+FROM Profesor, Asignaturas, Actividades, Cursos, CursosAsignaturas
+WHERE Profesor.nitAsignatura = Asignaturas.nitAsignatura 
+and Actividades.nitAsignatura = Asignaturas.nitAsignatura 
+and Asignaturas.nitAsignatura = CursosAsignaturas.nitAsignatura
 and CursosAsignaturas.codigoCurso = Cursos.codigoCurso
-and CursosAsignaturas.nitAsignatura = Asignaturas.nitAsignatura
-and Asignaturas.nitAsignatura = Actividades.nitAsignatura
 and Asignaturas.nombreAsignatura = 'Algoritmo'
-and Actividades.fechaActividad >= '2025-08-20' and '2025-08-22' <= Actividades.fechaActividad
+and Actividades.fechaActividad between '2025-08-20' and '2025-08-22';
 
 --Ejercicio 7.3--
-update Actividades set nombreActividad = 'Exposición modelos de BD' where idActividades = 2
+update Actividades set nombreActividad = 'Exposición modelos de BD' where fechaActividad  = '2026-02-05'
 
 --Ejercicio 7.4--
 select tipoActividad, nombreProfesor from Actividades, Asignaturas, Cursos, Profesor, CursosAsignaturas
@@ -41,12 +42,18 @@ and nombreCurso = 'Sexto 02'
 
 --Ejercicio 7.6--
 delete from Calificacion where fechaCalificacion between '2025-08-19' and '2025-08-20'
+Select * from Calificacion where fechaCalificacion between '2025-08-19' and '2025-08-20'
 
 --Ejercicio 7.7--
 select avg (cast (Estudiantes.edadEstudiantes as float)) as Promedio_edad_mujeres from Estudiantes 
 where generoEstudiantes = 'Femenino'
 
--- 7.8 Mostrar el valor de la calificación que obtuvo el estudiante Juan Gómez en la actividad de tipo quiz de la asignatura algoritmo del curso once 01 y el nombre del profesor que publicó la actividad.
+
+-- 7.8 Mostrar el valor de la calificación que obtuvo el estudiante Juan Gómez 
+-- en la actividad de tipo quiz 
+-- de la asignatura algoritmo 
+-- del curso once 01 
+-- y el nombre del profesor que publicó la actividad.
 SELECT Calificacion.notaCalificacion, Profesor.nombreProfesor, Profesor.apellidoProfesor
 FROM Calificacion, Estudiantes, Actividades, Asignaturas, Cursos, Profesor, CursosAsignaturas
 WHERE Estudiantes.nombreEstudiantes = 'Juan Gómez'
@@ -65,16 +72,14 @@ AND Profesor.nitAsignatura = Asignaturas.nitAsignatura;
 -- mayor promedio de calificaciones en la 
 -- actividad de tipo examen en la asignatura matemáticas 
 -- y el nombre y jornada del curso al que pertenecen.
-
 SELECT nombreEstudiantes, AVG(notaCalificacion) as 'Promedio de calificaciones', nombreCurso, jornadaCurso 
-FROM Estudiantes, Calificacion, Actividades, Asignaturas, Cursos, CursosAsignaturas
+FROM Estudiantes, Calificacion, Actividades, Asignaturas, Cursos
 WHERE Estudiantes.idEstudiantes = Calificacion.idEstudiantes
 and Calificacion.idActividades = Actividades.idActividades
 and Actividades.tipoActividad = 'Examen'
 and Actividades.nitAsignatura = Asignaturas.nitAsignatura
 and Asignaturas.nombreAsignatura = 'Matemáticas'
-and Asignaturas.nitAsignatura = CursosAsignaturas.nitAsignatura
-and CursosAsignaturas.codigoCurso = Cursos.codigoCurso
+and Estudiantes.codigoCurso = Cursos.codigoCurso 
 GROUP BY nombreEstudiantes, nombreCurso, jornadaCurso 
 
 
@@ -131,7 +136,7 @@ GROUP BY nombreCurso
 -- 7.14 Mostrar los nombres de las asignaturas pertenecientes al grado décimo 01, 
 -- junto con los nombres de los profesores que orientan cada asignatura 
 -- y la cantidad de actividades de aprendizaje publicadas en cada asignatura.
-SELECT nombreAsignatura, nombreProfesor, COUNT(idActividades) as 'Cantidad total de actividades' 
+SELECT nombreAsignatura, nombreProfesor, COUNT(distinct idActividades) as 'Cantidad total de actividades' 
 FROM Asignaturas, Cursos, CursosAsignaturas, Profesor, Actividades
 WHERE Asignaturas.nitAsignatura = CursosAsignaturas.nitAsignatura
 and CursosAsignaturas.codigoCurso = Cursos.codigoCurso 
