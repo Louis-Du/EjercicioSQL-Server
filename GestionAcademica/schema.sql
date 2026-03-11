@@ -49,10 +49,8 @@ CREATE TABLE Estudiantes (
     emailEstudiantes VARCHAR(50) NOT NULL,
     generoEstudiantes VARCHAR(50) NOT NULL,
     codigoCurso INT NOT NULL,
-    FOREIGN KEY (codigoCurso) REFERENCES Cursos(codigoCurso)
+    FOREIGN KEY (codigoCurso) REFERENCES Cursos(codigoCurso),
 )
-
-
 
 CREATE TABLE CursosAsignaturas (
     nitAsignatura INT NOT NULL,
