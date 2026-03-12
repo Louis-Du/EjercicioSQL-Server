@@ -55,4 +55,45 @@ inner join Aprendiz a on ae.idAprend = a.idAprend
 GROUP BY i.modalidadInscrip, e.tipoEvento 
 order by i.modalidadInscrip  DESC;
 
+-- 6. Mostrar el promedio de edades de los aprendices 
+-- de género masculino 
+-- inscritos al evento de tipo deportivo.
+select AVG(a.edadAprend) 
+from Aprendiz a 
+inner join AprendizEvento ae on a.idAprend = ae.idAprend
+inner join Eventos e on ae.idEvento = e.idEvento
+inner join Inscripcion i on e.idInscripcion = i.idInscripcion
+where a.generoAprend = 'M'
+AND e.tipoEvento ='Deportivo'
+
+-- x7. Mostrar la cantidad de aprendices de acuerdo al género de cada uno (cantidad de hombres y cantidad de mujeres) 
+-- de la ficha 300101.
+select COUNT(a.idAprend) as 'Aprendices del género femenino'
+from Aprendiz a 
+where a.generoAprend = 'F'
+and a.codigoFicha = 300101
+
+select COUNT(a.idAprend) as 'Aprendices del género masculino'
+from Aprendiz a 
+where a.generoAprend = 'M'
+and a.codigoFicha = 300101
+
+-- 8. Mostrar el nombre del grupo 
+-- que tenga aprendices menores de edad 
+-- y el número de ficha al que pertenece.
+select g.nombreGrupo, a.codigoFicha  
+from Grupo g 
+inner join Aprendiz a on g.idGrupo = a.idGrupo
+where a.edadAprend < 18;
+
+-- 9. Mostrar números de fichas de los aprendices 
+-- que sean mujeres 
+-- y tengan entre 18 y 22 años 
+-- y el nombre del grupo al que pertenecen.
+select f.codigoFicha, g.nombreGrupo  
+from Ficha f 
+inner join Aprendiz a on f.codigoFicha = a.codigoFicha
+inner join Grupo g on a.idGrupo = g.idGrupo
+where a.generoAprend = 'F'
+and a.edadAprend between 18 and 22;
 
