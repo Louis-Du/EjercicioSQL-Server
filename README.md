@@ -1,14 +1,3 @@
-## Cómo usar
-
-Puedes ejecutar los scripts SQL de cada carpeta en tu entorno de preferencia, como SQL Server Management Studio (SSMS) o Azure Data Studio. Sigue estos pasos generales:
-
-1. Abre tu gestor de base de datos SQL Server.
-2. Ejecuta el script `schema.sql` para crear la estructura de la base de datos y las tablas.
-3. Ejecuta el script `data.sql` para poblar las tablas con datos de ejemplo.
-4. Ejecuta los scripts de consultas (`queries.sql` o `Query.sql`) para practicar y ver ejemplos de operaciones CRUD y consultas avanzadas.
-
-Cada carpeta contiene un archivo README propio con ejemplos y detalles específicos del ejercicio.
-
 ![SQL Server](https://img.shields.io/badge/DB-SQL%20Server-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
 ![T-SQL](https://img.shields.io/badge/Language-T--SQL-1f6feb?style=flat)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
@@ -42,6 +31,17 @@ Cada carpeta contiene:
 - Scripts de inserción de datos (`data.sql`)
 - Consultas de ejemplo (`queries.sql` o `Query.sql`)
 - Modelos relacionales documentados
+
+## Cómo usar
+
+Puedes ejecutar los scripts SQL de cada carpeta en tu entorno de preferencia, como SQL Server Management Studio (SSMS) o Azure Data Studio. Sigue estos pasos generales:
+
+1. Abre tu gestor de base de datos SQL Server.
+2. Ejecuta el script `schema.sql` para crear la estructura de la base de datos y las tablas.
+3. Ejecuta el script `data.sql` para poblar las tablas con datos de ejemplo.
+4. Ejecuta los scripts de consultas (`queries.sql` o `Query.sql`) para practicar y ver ejemplos de operaciones CRUD y consultas avanzadas.
+
+Cada carpeta contiene un archivo README propio con ejemplos y detalles específicos del ejercicio.
 
 ## Modelos Relacionales
 Cada ejercicio principal incluye su modelo relacional correspondiente. Puedes visualizar los diagramas directamente desde los siguientes enlaces:
