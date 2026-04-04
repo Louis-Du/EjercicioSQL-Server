@@ -1,53 +1,59 @@
 -- Creación de la base de datos Bodega
-CREATE DATABASE Bodega
-GO
+CREATE DATABASE Bodegas
+
 -- Se crean las tablas 
-create table Categorias(
-	codigoCateg int not null PRIMARY KEY,
-	nombreCateg VARCHAR(50) not null
-)
+CREATE TABLE Categorias(
+	codigoCateg int NOT NULL PRIMARY KEY,
+	nombreCateg VARCHAR(50) NOT NULL
+);
 
 CREATE TABLE Productos(
-	codigoprod int not null PRIMARY KEY, 
-	nombreprod varchar(50) not null, 
-	Valorunitarioprod int not null,
-	codigoCateg int not null,
-	foreign key (codigoCateg) references Categorias
-)
+	codigoprod int NOT NULL PRIMARY KEY, 
+	nombreprod varchar(50) NOT NULL, 
+	Valorunitarioprod int NOT NULL,
+	codigoCateg int NOT NULL,
+	FOREIGN KEY (codigoCateg) REFERENCES Categorias(codigoCateg)
+);
 
 CREATE TABLE Proveedor(
-	nitproved int not null PRIMARY KEY, 
-	nombreproved varchar(50) not null, 
-	telefonoproved numeric not null, 
+	nitproved int NOT NULL PRIMARY KEY, 
+	nombreproved varchar(50) NOT NULL, 
+	telefonoproved numeric NOT NULL, 
 	direccionproved varchar(50), 
 	emailproved varchar(35)
-)
+);
 
 CREATE TABLE Clientes(
-	idcliente int not null primary key, 
-	nombrecliente varchar(50) not null, 
-	apellidoscliente varchar(50) not null, 
-	direccioncliente varchar(30) not null, 
-	telefonocliente numeric not null, 
-	edadcliente int not null, 
-	generocliente varchar(15) not null
-)
+	idcliente int NOT NULL PRIMARY KEY, 
+	nombrecliente varchar(50) NOT NULL, 
+	apellidoscliente varchar(50) NOT NULL, 
+	direccioncliente varchar(30) NOT NULL, 
+	telefonocliente numeric NOT NULL, 
+	edadcliente int NOT NULL, 
+	generocliente varchar(15) NOT NULL
+);
 
 CREATE TABLE Pedidos(
-	codigoped int not null primary key, 
-	cantidadprodped numeric not null, 
-	fechaped date not null, 
-	horaped time not null,  
-	idcliente int not null
-	foreign key (idcliente) references Clientes
-)
+	codigoped int NOT NULL PRIMARY KEY, 
+	cantidadprodped numeric NOT NULL, 
+	fechaped date NOT NULL, 
+	horaped time NOT NULL,  
+	idcliente int NOT NULL,
+	FOREIGN KEY (idcliente) REFERENCES Clientes(idcliente)
+);
 
 CREATE TABLE ProductosProveedor(
-	codigoprod int not null, 
-	nitproved int not null
-)
+	codigoprod int NOT NULL, 
+	nitproved int NOT NULL,
+	PRIMARY KEY (codigoprod, nitproved),
+	FOREIGN KEY (codigoprod) REFERENCES Productos(codigoprod),
+	FOREIGN KEY (nitproved) REFERENCES Proveedor(nitproved)
+);
 
 CREATE TABLE ProductosPedidos(
-	codigoprod int not null, 
-	codigoped int not null
-)
+	codigoprod int NOT NULL, 
+	codigoped int NOT NULL,
+	PRIMARY KEY (codigoprod, codigoped),
+	FOREIGN KEY (codigoprod) REFERENCES Productos(codigoprod),
+	FOREIGN KEY (codigoped) REFERENCES Pedidos(codigoped)
+);
